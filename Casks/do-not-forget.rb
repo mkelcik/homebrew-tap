@@ -15,14 +15,15 @@ cask "do-not-forget" do
   # The app updates itself from GitHub Releases; the release workflow bumps this cask too.
   auto_updates true
   depends_on arch: :arm64
-  depends_on macos: ">= :big_sur"
+  depends_on :macos
 
   app "do-not-forget.app", target: "Do Not Forget.app"
 
   # Not notarised yet: without this, Gatekeeper refuses to open the app.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Do Not Forget.app"]
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:           ["-dr", "com.apple.quarantine", "{{appdir}}/Do Not Forget.app"],
+        writable_paths: ["{{appdir}}/Do Not Forget.app"]
   end
 
   uninstall quit: "io.github.mkelcik.do-not-forget"

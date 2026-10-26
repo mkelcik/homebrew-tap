@@ -1,6 +1,6 @@
 cask "do-not-forget" do
-  version "0.12.1"
-  sha256 "06766c3b736ddcb06331753437ea3ad0a4321629feb1c318df95dc9cee2434d8"
+  version "0.12.2"
+  sha256 "bb4f5194c0285aa13a2c7403b80d55f46a13324abfb20ab3dbf2cbd6772b23e2"
 
   url "https://github.com/mkelcik/do-not-forget/releases/download/v#{version}/do-not-forget_darwin_arm64.zip"
   name "Do Not Forget"
